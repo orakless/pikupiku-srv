@@ -13,7 +13,7 @@ public class Map {
     @Column(name = "hash", nullable = false, unique = true)
     private String hash;
 
-    @Column(name = "hit_objects", nullable = false, unique = false)
+    @Column(name = "hit_objects", nullable = false)
     private int hitObjects;
 
 
