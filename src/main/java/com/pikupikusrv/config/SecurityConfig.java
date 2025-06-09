@@ -30,7 +30,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register", "/auth/login", "/maps/**", "/scores/**").permitAll()  // Endpoints publics
+                        .requestMatchers("/auth/register", "/auth/login","/auth/logout", "/maps/**", "/scores/**", "/users/**").permitAll()  // Endpoints publics
                         .anyRequest().authenticated()  // Tout le reste nécessite une authentification
                 )
                 .httpBasic(Customizer.withDefaults()); // Utilisation de l'authentification HTTP basique

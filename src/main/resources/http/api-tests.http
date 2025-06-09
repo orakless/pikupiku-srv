@@ -48,3 +48,13 @@ GET http://localhost:8080/scores/map/xyz789
 ### Récupérer le highscore de `ouziri` sur la map `xyz789`
 GET http://localhost:8080/scores/highscore?username=ouziri&hash=xyz789
 
+###
+### Récupérer les infos d’un utilisateur
+GET http://localhost:8080/users/ouziri
+
+###
+### Déconnexion
+POST http://localhost:8080/auth/logout
+
+
+

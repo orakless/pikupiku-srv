@@ -4,6 +4,8 @@ import com.pikupikusrv.dto.LoginDTO;
 import com.pikupikusrv.dto.RegisterDTO;
 import com.pikupikusrv.entities.User;
 import com.pikupikusrv.services.interfaces.IUserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
 
 
 /**
@@ -72,7 +75,21 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Échec d'authentification");
         }
     }
-    // TODO: Ajouter un endpoint pour déconnecter un utilisateur
+    /**
+     * Endpoint pour déconnecter un utilisateur.
+     *
+     * @param request  L'objet HttpServletRequest pour accéder à la session.
+     * @param response L'objet HttpServletResponse pour manipuler la réponse.
+     * @return Une réponse HTTP indiquant que la déconnexion a réussi.
+     */
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().invalidate();
+        SecurityContextHolder.clearContext();
+        return ResponseEntity.ok("Déconnexion réussie");
+    }
+
+
 
 
 }
